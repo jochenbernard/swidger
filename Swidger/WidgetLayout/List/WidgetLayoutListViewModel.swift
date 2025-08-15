@@ -5,11 +5,15 @@ import Observation
 class WidgetLayoutListViewModel {
     private let store: WidgetLayoutStore
 
+    let editor: WidgetLayoutEditorViewModel
+
     // swiftlint:disable:next discouraged_optional_collection
     private(set) var layouts: [WidgetLayout]?
 
     init(store: WidgetLayoutStore) {
         self.store = store
+
+        self.editor = WidgetLayoutEditorViewModel(store: store)
 
         self.trackLayouts()
     }

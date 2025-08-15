@@ -1,6 +1,18 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Add Widget Layout" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Edit Widget Layout" : {
+
+    },
+    "Name" : {
+
+    },
     "No Widget Layouts" : {
 
     }

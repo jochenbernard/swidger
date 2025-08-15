@@ -1,5 +1,5 @@
-struct MockWidgetLayoutManager: WidgetLayoutManagerProtocol {
-    private let layouts: [WidgetLayout]
+class MockWidgetLayoutManager: WidgetLayoutManagerProtocol {
+    private var layouts: [WidgetLayout]
 
     init(layouts: [WidgetLayout]) {
         self.layouts = layouts
@@ -7,5 +7,9 @@ struct MockWidgetLayoutManager: WidgetLayoutManagerProtocol {
 
     func getAll() -> [WidgetLayout] {
         layouts
+    }
+
+    func add(_ layout: WidgetLayout) {
+        layouts.append(layout)
     }
 }

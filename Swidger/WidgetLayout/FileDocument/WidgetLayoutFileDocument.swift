@@ -19,11 +19,11 @@ struct WidgetLayoutFileDocument: Codable, FileDocument, Identifiable {
         self.rawData = rawData
     }
 
-    init(_ widgetLayout: WidgetLayout) {
+    init(_ layout: WidgetLayout) {
         self.init(
-            id: widgetLayout.id,
-            name: widgetLayout.name,
-            rawData: widgetLayout.rawData
+            id: layout.id,
+            name: layout.name,
+            rawData: layout.rawData
         )
     }
 
@@ -33,8 +33,8 @@ struct WidgetLayoutFileDocument: Codable, FileDocument, Identifiable {
         }
 
         let decoder = JSONDecoder()
-        let fileDocument = try decoder.decode(Self.self, from: data)
-        self = fileDocument
+        let document = try decoder.decode(Self.self, from: data)
+        self = document
     }
 
     // swiftlint:disable:next unused_parameter

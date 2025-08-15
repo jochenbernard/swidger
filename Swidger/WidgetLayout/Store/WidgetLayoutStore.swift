@@ -20,6 +20,11 @@ class WidgetLayoutStore {
         }
     }
 
+    func add(_ layout: WidgetLayout) {
+        manager.add(layout)
+        update()
+    }
+
     static var mock: WidgetLayoutStore {
         let layouts = (0..<4).map { index in
             WidgetLayout(

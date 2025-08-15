@@ -15,11 +15,11 @@ final class WidgetLayout: Identifiable, Sendable {
         self.rawData = rawData
     }
 
-    convenience init(_ fileDocument: WidgetLayoutFileDocument) {
+    convenience init(_ document: WidgetLayoutFileDocument) {
         self.init(
-            id: fileDocument.id,
-            name: fileDocument.name,
-            rawData: fileDocument.rawData
+            id: document.id,
+            name: document.name,
+            rawData: document.rawData
         )
     }
 

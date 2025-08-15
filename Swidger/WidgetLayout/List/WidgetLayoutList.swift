@@ -8,20 +8,33 @@ struct WidgetLayoutList: View {
     }
 
     var body: some View {
-        if let layouts = viewModel.layouts {
-            if !layouts.isEmpty {
-                List(
-                    layouts,
-                    rowContent: WidgetLayoutRow.init
-                )
+        Group {
+            if let layouts = viewModel.layouts {
+                if !layouts.isEmpty {
+                    List(
+                        layouts,
+                        rowContent: WidgetLayoutRow.init
+                    )
+                } else {
+                    ContentUnavailableView(
+                        "No Widget Layouts",
+                        systemImage: "widget.extralarge"
+                    )
+                }
             } else {
-                ContentUnavailableView(
-                    "No Widget Layouts",
-                    systemImage: "widget.extralarge"
-                )
+                ProgressView()
             }
-        } else {
-            ProgressView()
+        }
+        .widgetLayoutEditor(viewModel: viewModel.editor)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button(
+                    "Add Widget Layout",
+                    systemImage: "plus",
+                    action: viewModel.editor.create
+                )
+                .keyboardShortcut("n")
+            }
         }
     }
 }
