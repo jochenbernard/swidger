@@ -36,4 +36,8 @@ class WidgetLayoutListViewModel {
         let layouts = indexSet.compactMap({ self.layouts?[$0] })
         store.delete(layouts)
     }
+
+    func apply(_ layout: WidgetLayout) {
+        store.apply(layout)
+    }
 }

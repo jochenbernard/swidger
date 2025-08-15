@@ -24,4 +24,6 @@ class MockWidgetLayoutManager: WidgetLayoutManagerProtocol {
             self.layouts.removeValue(forKey: layout.id)
         }
     }
+
+    func apply(_: WidgetLayout) {}
 }

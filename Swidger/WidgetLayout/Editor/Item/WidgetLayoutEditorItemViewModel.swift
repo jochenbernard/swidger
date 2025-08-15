@@ -58,7 +58,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
             WidgetLayout(
                 id: layout.id,
                 name: name,
-                rawData: layout.rawData
+                uiDefaults: layout.uiDefaults
             )
         )
     }
@@ -68,7 +68,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
             WidgetLayout(
                 id: UUID(),
                 name: name,
-                rawData: Data()
+                uiDefaults: Data()
             )
         )
     }

@@ -7,24 +7,16 @@ struct WidgetLayoutFileDocument: Codable, FileDocument, Identifiable {
 
     let id: UUID
     let name: String
-    let rawData: Data
+    let uiDefaults: Data
 
     init(
         id: UUID,
         name: String,
-        rawData: Data
+        uiDefaults: Data
     ) {
         self.id = id
         self.name = name
-        self.rawData = rawData
-    }
-
-    init(_ layout: WidgetLayout) {
-        self.init(
-            id: layout.id,
-            name: layout.name,
-            rawData: layout.rawData
-        )
+        self.uiDefaults = uiDefaults
     }
 
     init(file: FileWrapper) throws {

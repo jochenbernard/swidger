@@ -47,12 +47,20 @@ class WidgetLayoutStore {
         update()
     }
 
+    func apply(_ layout: WidgetLayout) {
+        do {
+            try manager.apply(layout)
+        } catch {
+            assertionFailure(String(describing: error))
+        }
+    }
+
     static var mock: WidgetLayoutStore {
         let layouts = (0..<4).map { index in
             WidgetLayout(
                 id: UUID(),
                 name: "Widget Layout \(index + 1)",
-                rawData: Data()
+                uiDefaults: Data()
             )
         }
 

@@ -4,6 +4,8 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
     private let fileManager: FileManager
     private let directoryURL: URL
 
+    private let notificationCenterManager = NotificationCenterManager()
+
     init(
         fileManager: FileManager,
         directoryURL: URL
@@ -31,12 +33,21 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
                 try? WidgetLayoutFileDocument(file: file)
             }
             .map { document in
-                WidgetLayout(document)
+                WidgetLayout(
+                    id: document.id,
+                    name: document.name,
+                    uiDefaults: document.uiDefaults
+                )
             }
     }
 
     func add(_ layout: WidgetLayout) throws {
-        let document = WidgetLayoutFileDocument(layout)
+        let uiDefaults = try notificationCenterManager.getUIDefaults()
+        let document = WidgetLayoutFileDocument(
+            id: layout.id,
+            name: layout.name,
+            uiDefaults: uiDefaults
+        )
         let file = try document.fileWrapper()
         try file.write(
             to: fileURL(for: layout),
@@ -46,7 +57,11 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
     }
 
     func edit(_ layout: WidgetLayout) throws {
-        let document = WidgetLayoutFileDocument(layout)
+        let document = WidgetLayoutFileDocument(
+            id: layout.id,
+            name: layout.name,
+            uiDefaults: layout.uiDefaults
+        )
         let file = try document.fileWrapper()
         let fileURL = fileURL(for: layout)
         try file.write(
@@ -62,6 +77,10 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
             .forEach { fileURL in
                 try? fileManager.removeItem(at: fileURL)
             }
+    }
+
+    func apply(_ layout: WidgetLayout) throws {
+        try notificationCenterManager.setUIDefaults(layout.uiDefaults)
     }
 
     private func fileURL(for layout: WidgetLayout) -> URL {
