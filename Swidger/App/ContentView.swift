@@ -6,6 +6,7 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
+                .accessibilityHidden(true)
 
             Text("Hello, world!")
         }
