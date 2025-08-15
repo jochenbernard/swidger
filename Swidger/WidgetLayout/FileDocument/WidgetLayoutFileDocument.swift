@@ -27,21 +27,29 @@ struct WidgetLayoutFileDocument: Codable, FileDocument, Identifiable {
         )
     }
 
-    init(configuration: ReadConfiguration) throws {
-        guard let data = configuration.file.regularFileContents else {
+    init(file: FileWrapper) throws {
+        guard let fileContents = file.regularFileContents else {
             throw Error.missingFileContents
         }
 
         let decoder = JSONDecoder()
-        let document = try decoder.decode(Self.self, from: data)
+        let document = try decoder.decode(Self.self, from: fileContents)
         self = document
+    }
+
+    init(configuration: ReadConfiguration) throws {
+        try self.init(file: configuration.file)
+    }
+
+    func fileWrapper() throws -> FileWrapper {
+        let encoder = JSONEncoder()
+        let data = try encoder.encode(self)
+        return FileWrapper(regularFileWithContents: data)
     }
 
     // swiftlint:disable:next unused_parameter
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let encoder = JSONEncoder()
-        let data = try encoder.encode(self)
-        return FileWrapper(regularFileWithContents: data)
+        try fileWrapper()
     }
 
     enum Error: Swift.Error {

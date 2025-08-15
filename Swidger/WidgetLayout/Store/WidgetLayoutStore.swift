@@ -15,18 +15,30 @@ class WidgetLayoutStore {
     }
 
     func update() {
-        layouts = manager.getAll().reduce(into: [:]) { layouts, layout in
-            layouts[layout.id] = layout
+        do {
+            layouts = try manager.getAll().reduce(into: [:]) { layouts, layout in
+                layouts[layout.id] = layout
+            }
+        } catch {
+            assertionFailure(String(describing: error))
         }
     }
 
     func add(_ layout: WidgetLayout) {
-        manager.add(layout)
+        do {
+            try manager.add(layout)
+        } catch {
+            assertionFailure(String(describing: error))
+        }
         update()
     }
 
     func edit(_ layout: WidgetLayout) {
-        manager.edit(layout)
+        do {
+            try manager.edit(layout)
+        } catch {
+            assertionFailure(String(describing: error))
+        }
         update()
     }
 

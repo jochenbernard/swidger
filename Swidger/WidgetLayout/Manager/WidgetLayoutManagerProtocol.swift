@@ -1,6 +1,6 @@
 protocol WidgetLayoutManagerProtocol {
-    func getAll() -> [WidgetLayout]
-    func add(_ layout: WidgetLayout)
-    func edit(_ layout: WidgetLayout)
+    func getAll() throws -> [WidgetLayout]
+    func add(_ layout: WidgetLayout) throws
+    func edit(_ layout: WidgetLayout) throws
     func delete(_ layouts: [WidgetLayout])
 }
