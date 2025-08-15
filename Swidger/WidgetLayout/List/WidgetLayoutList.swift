@@ -13,18 +13,10 @@ struct WidgetLayoutList: View {
                 if !layouts.isEmpty {
                     List {
                         ForEach(layouts) { layout in
-                            WidgetLayoutRow(layout)
-                                .contextMenu {
-                                    Button("Apply") {
-                                        viewModel.apply(layout)
-                                    }
-
-                                    Divider()
-
-                                    Button("Edit") {
-                                        viewModel.editor.edit(layout)
-                                    }
-                                }
+                            WidgetLayoutRow(
+                                layout,
+                                viewModel: viewModel
+                            )
                         }
                         .onDelete(perform: viewModel.delete)
                     }
