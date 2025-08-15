@@ -1,15 +1,21 @@
 class MockWidgetLayoutManager: WidgetLayoutManagerProtocol {
-    private var layouts: [WidgetLayout]
+    private var layouts: [WidgetLayout.ID: WidgetLayout]
 
     init(layouts: [WidgetLayout]) {
-        self.layouts = layouts
+        self.layouts = layouts.reduce(into: [:]) { layouts, layout in
+            layouts[layout.id] = layout
+        }
     }
 
     func getAll() -> [WidgetLayout] {
-        layouts
+        Array(layouts.values)
     }
 
     func add(_ layout: WidgetLayout) {
-        layouts.append(layout)
+        layouts[layout.id] = layout
+    }
+
+    func edit(_ layout: WidgetLayout) {
+        layouts[layout.id] = layout
     }
 }

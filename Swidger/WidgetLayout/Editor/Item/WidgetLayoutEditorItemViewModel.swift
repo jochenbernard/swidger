@@ -53,7 +53,15 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
         }
     }
 
-    private func edit(_: WidgetLayout) {}
+    private func edit(_ layout: WidgetLayout) {
+        store.edit(
+            WidgetLayout(
+                id: layout.id,
+                name: name,
+                rawData: layout.rawData
+            )
+        )
+    }
 
     private func create() {
         store.add(

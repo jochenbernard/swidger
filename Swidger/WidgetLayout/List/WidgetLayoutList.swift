@@ -11,10 +11,14 @@ struct WidgetLayoutList: View {
         Group {
             if let layouts = viewModel.layouts {
                 if !layouts.isEmpty {
-                    List(
-                        layouts,
-                        rowContent: WidgetLayoutRow.init
-                    )
+                    List(layouts) { layout in
+                        WidgetLayoutRow(layout)
+                            .contextMenu {
+                                Button("Edit") {
+                                    viewModel.editor.edit(layout)
+                                }
+                            }
+                    }
                 } else {
                     ContentUnavailableView(
                         "No Widget Layouts",

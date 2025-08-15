@@ -3,7 +3,7 @@ import SwiftUI
 struct WidgetLayoutRow: View {
     private let layout: WidgetLayout
 
-    init(layout: WidgetLayout) {
+    init(_ layout: WidgetLayout) {
         self.layout = layout
     }
 
@@ -13,5 +13,5 @@ struct WidgetLayoutRow: View {
 }
 
 #Preview {
-    WidgetLayoutRow(layout: .mock)
+    WidgetLayoutRow(.mock)
 }
