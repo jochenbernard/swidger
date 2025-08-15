@@ -24,7 +24,8 @@ class WidgetLayoutStore {
         let layouts = (0..<4).map { index in
             WidgetLayout(
                 id: UUID(),
-                name: "Widget Layout \(index + 1)"
+                name: "Widget Layout \(index + 1)",
+                rawData: Data()
             )
         }
 
