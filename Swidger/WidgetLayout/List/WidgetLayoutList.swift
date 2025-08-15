@@ -11,13 +11,16 @@ struct WidgetLayoutList: View {
         Group {
             if let layouts = viewModel.layouts {
                 if !layouts.isEmpty {
-                    List(layouts) { layout in
-                        WidgetLayoutRow(layout)
-                            .contextMenu {
-                                Button("Edit") {
-                                    viewModel.editor.edit(layout)
+                    List {
+                        ForEach(layouts) { layout in
+                            WidgetLayoutRow(layout)
+                                .contextMenu {
+                                    Button("Edit") {
+                                        viewModel.editor.edit(layout)
+                                    }
                                 }
-                            }
+                        }
+                        .onDelete(perform: viewModel.delete)
                     }
                 } else {
                     ContentUnavailableView(

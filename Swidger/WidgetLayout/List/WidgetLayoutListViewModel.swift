@@ -1,4 +1,4 @@
-import Observation
+import Foundation
 
 @Observable
 @MainActor
@@ -30,5 +30,10 @@ class WidgetLayoutListViewModel {
         layouts = store.layouts?.values
             .sorted(by: { $0.id < $1.id })
             .sorted(by: { $0.name < $1.name })
+    }
+
+    func delete(indexSet: IndexSet) {
+        let layouts = indexSet.compactMap({ self.layouts?[$0] })
+        store.delete(layouts)
     }
 }
