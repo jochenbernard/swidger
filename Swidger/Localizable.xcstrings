@@ -7,6 +7,9 @@
     "Cancel" : {
 
     },
+    "Develop" : {
+
+    },
     "Edit" : {
 
     },
@@ -17,6 +20,12 @@
 
     },
     "No Widget Layouts" : {
+
+    },
+    "Open Application Support Directory..." : {
+
+    },
+    "Use mock data" : {
 
     }
   },

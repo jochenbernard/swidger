@@ -8,5 +8,10 @@ struct SwidgerApp: App {
         WindowGroup {
             WidgetLayoutList(viewModel: viewModel.list)
         }
+        .commands {
+            #if DEBUG
+            DevelopCommands(viewModel: viewModel.developCommands)
+            #endif
+        }
     }
 }
