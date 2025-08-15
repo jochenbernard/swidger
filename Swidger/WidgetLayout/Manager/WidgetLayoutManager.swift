@@ -14,6 +14,23 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
         self.directoryURL = directoryURL
     }
 
+    private func get(fileURL: URL) throws -> WidgetLayout {
+        let file = try FileWrapper(
+            url: fileURL,
+            options: .immediate
+        )
+        let document = try WidgetLayoutFileDocument(file: file)
+        return WidgetLayout(
+            id: document.id,
+            name: document.name,
+            uiDefaults: document.uiDefaults
+        )
+    }
+
+    func get(id: WidgetLayout.ID) throws -> WidgetLayout {
+        try get(fileURL: fileURL(for: id))
+    }
+
     func getAll() throws -> [WidgetLayout] {
         try fileManager
             .contentsOfDirectory(
@@ -24,20 +41,7 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
                 fileURL.pathExtension == WidgetLayoutFileDocument.filenameExtension
             }
             .compactMap { fileURL in
-                try? FileWrapper(
-                    url: fileURL,
-                    options: .immediate
-                )
-            }
-            .compactMap { file in
-                try? WidgetLayoutFileDocument(file: file)
-            }
-            .map { document in
-                WidgetLayout(
-                    id: document.id,
-                    name: document.name,
-                    uiDefaults: document.uiDefaults
-                )
+                try? get(fileURL: fileURL)
             }
     }
 
@@ -84,8 +88,12 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
     }
 
     private func fileURL(for layout: WidgetLayout) -> URL {
+        fileURL(for: layout.id)
+    }
+
+    private func fileURL(for id: WidgetLayout.ID) -> URL {
         directoryURL
-            .appending(component: layout.id.uuidString)
+            .appending(component: id.uuidString)
             .appendingPathExtension(WidgetLayoutFileDocument.filenameExtension)
     }
 }

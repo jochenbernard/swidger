@@ -7,6 +7,14 @@ class MockWidgetLayoutManager: WidgetLayoutManagerProtocol {
         }
     }
 
+    func get(id: WidgetLayout.ID) throws -> WidgetLayout {
+        guard let layout = layouts[id] else {
+            throw Error.notFound
+        }
+
+        return layout
+    }
+
     func getAll() -> [WidgetLayout] {
         Array(layouts.values)
     }
@@ -26,4 +34,8 @@ class MockWidgetLayoutManager: WidgetLayoutManagerProtocol {
     }
 
     func apply(_: WidgetLayout) {}
+
+    enum Error: Swift.Error {
+        case notFound
+    }
 }
