@@ -1,14 +1,14 @@
 import Foundation
 
 final class WidgetLayout: Identifiable, Sendable {
-    let id: UUID
+    let id: String
     let name: String
     let icon: WidgetLayoutIcon
     let color: WidgetLayoutColor
     let uiDefaults: Data
 
     init(
-        id: UUID,
+        id: String,
         name: String,
         icon: WidgetLayoutIcon,
         color: WidgetLayoutColor,
@@ -21,9 +21,12 @@ final class WidgetLayout: Identifiable, Sendable {
         self.uiDefaults = uiDefaults
     }
 
-    convenience init(_ document: WidgetLayoutFileDocument) {
+    convenience init(
+        id: String,
+        document: WidgetLayoutFileDocument
+    ) {
         self.init(
-            id: document.id,
+            id: id,
             name: document.name,
             icon: document.icon,
             color: document.color,
@@ -33,7 +36,7 @@ final class WidgetLayout: Identifiable, Sendable {
 
     static var mock: WidgetLayout {
         WidgetLayout(
-            id: UUID(),
+            id: UUID().uuidString,
             name: "Widget Layout 1",
             icon: .square,
             color: .blue,

@@ -36,7 +36,7 @@ class WidgetLayoutImporterViewModel {
         let document = try WidgetLayoutFileDocument(file: file)
         let name = firstAvailableName(forPreferredName: document.name)
         let layout = WidgetLayout(
-            id: UUID(),
+            id: UUID().uuidString,
             name: name,
             icon: document.icon,
             color: document.color,

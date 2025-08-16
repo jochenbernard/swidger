@@ -1,3 +1,4 @@
+import FoundationCommon
 import SwiftUI
 
 struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
@@ -20,7 +21,10 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
             options: .immediate
         )
         let document = try WidgetLayoutFileDocument(file: file)
-        return WidgetLayout(document)
+        return WidgetLayout(
+            id: fileURL.filename,
+            document: document
+        )
     }
 
     func get(id: WidgetLayout.ID) throws -> WidgetLayout {
@@ -48,7 +52,6 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
             layout.uiDefaults
         }
         let document = WidgetLayoutFileDocument(
-            id: layout.id,
             name: layout.name,
             icon: layout.icon,
             color: layout.color,
@@ -76,7 +79,6 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
     func update(_ layout: WidgetLayout) throws {
         let uiDefaults = try notificationCenterManager.getUIDefaults()
         let document = WidgetLayoutFileDocument(
-            id: layout.id,
             name: layout.name,
             icon: layout.icon,
             color: layout.color,
@@ -106,7 +108,7 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
 
     private func fileURL(for id: WidgetLayout.ID) -> URL {
         directoryURL
-            .appending(component: id.uuidString)
+            .appending(component: id)
             .appendingPathExtension(WidgetLayoutFileDocument.filenameExtension)
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		71201FAB2E5077ED00FCAAAD /* SwiftUICommon in Frameworks */ = {isa = PBXBuildFile; productRef = 71201FAA2E5077ED00FCAAAD /* SwiftUICommon */; };
+		7148494F2E50C9D5008BB96B /* FoundationCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 7148494E2E50C9D5008BB96B /* FoundationCommon */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7148494F2E50C9D5008BB96B /* FoundationCommon in Frameworks */,
 				71201FAB2E5077ED00FCAAAD /* SwiftUICommon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -34,10 +36,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7148494D2E50C9D5008BB96B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		71F9B7B12E4F1914005DA0F6 = {
 			isa = PBXGroup;
 			children = (
 				71F9B7BC2E4F1914005DA0F6 /* Swidger */,
+				7148494D2E50C9D5008BB96B /* Frameworks */,
 				71F9B7BB2E4F1914005DA0F6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +82,7 @@
 			name = Swidger;
 			packageProductDependencies = (
 				71201FAA2E5077ED00FCAAAD /* SwiftUICommon */,
+				7148494E2E50C9D5008BB96B /* FoundationCommon */,
 			);
 			productName = Swidger;
 			productReference = 71F9B7BA2E4F1914005DA0F6 /* Swidger.app */;
@@ -366,6 +377,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 71201FA92E5077ED00FCAAAD /* XCRemoteSwiftPackageReference "swift-common" */;
 			productName = SwiftUICommon;
+		};
+		7148494E2E50C9D5008BB96B /* FoundationCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71201FA92E5077ED00FCAAAD /* XCRemoteSwiftPackageReference "swift-common" */;
+			productName = FoundationCommon;
 		};
 		71B53A882E4F1F2400A69FD0 /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;

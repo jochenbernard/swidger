@@ -1,24 +1,21 @@
 import SwiftUI
 import UniformTypeIdentifiers
 
-struct WidgetLayoutFileDocument: Codable, FileDocument, Identifiable {
+struct WidgetLayoutFileDocument: Codable, FileDocument {
     static let filenameExtension = "wl"
     static let readableContentTypes = [UTType(filenameExtension: filenameExtension)].compactMap(\.self)
 
-    let id: UUID
     let name: String
     let icon: WidgetLayoutIcon
     let color: WidgetLayoutColor
     let uiDefaults: Data
 
     init(
-        id: UUID,
         name: String,
         icon: WidgetLayoutIcon,
         color: WidgetLayoutColor,
         uiDefaults: Data
     ) {
-        self.id = id
         self.name = name
         self.icon = icon
         self.color = color
@@ -27,7 +24,6 @@ struct WidgetLayoutFileDocument: Codable, FileDocument, Identifiable {
 
     init(_ layout: WidgetLayout) {
         self.init(
-            id: layout.id,
             name: layout.name,
             icon: layout.icon,
             color: layout.color,

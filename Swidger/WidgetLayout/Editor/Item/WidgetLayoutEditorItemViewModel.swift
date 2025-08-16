@@ -72,7 +72,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
     private func create() {
         store.add(
             WidgetLayout(
-                id: UUID(),
+                id: UUID().uuidString,
                 name: name,
                 icon: icon,
                 color: color,
