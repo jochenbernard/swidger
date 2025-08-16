@@ -106,6 +106,10 @@ struct WidgetLayoutRow: View {
 #Preview {
     WidgetLayoutRow(
         .mock,
-        viewModel: WidgetLayoutListViewModel(store: .mock)
+        viewModel: WidgetLayoutListViewModel(
+            store: WidgetLayoutStore(
+                manager: .mock
+            )
+        )
     )
 }

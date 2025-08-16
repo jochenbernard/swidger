@@ -51,7 +51,9 @@ struct WidgetLayoutList: View {
 #Preview {
     WidgetLayoutList(
         viewModel: WidgetLayoutListViewModel(
-            store: .mock
+            store: WidgetLayoutStore(
+                manager: .mock
+            )
         )
     )
 }

@@ -13,6 +13,11 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
     ) {
         self.fileManager = fileManager
         self.directoryURL = directoryURL
+
+        try? fileManager.createDirectory(
+            at: directoryURL,
+            withIntermediateDirectories: true
+        )
     }
 
     private func get(fileURL: URL) throws -> WidgetLayout {

@@ -7,6 +7,12 @@
     "Apply" : {
 
     },
+    "Apply ${layout} widget layout" : {
+
+    },
+    "Apply Widget Layout" : {
+
+    },
     "Are you sure you want to delete the selected widget layouts?" : {
 
     },
@@ -62,6 +68,9 @@
 
     },
     "Use mock data" : {
+
+    },
+    "Widget Layout" : {
 
     }
   },

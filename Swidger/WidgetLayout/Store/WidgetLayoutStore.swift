@@ -3,7 +3,7 @@ import Foundation
 @Observable
 @MainActor
 class WidgetLayoutStore {
-    private let manager: WidgetLayoutManagerProtocol
+    var manager: WidgetLayoutManagerProtocol
 
     // swiftlint:disable:next discouraged_optional_collection
     private(set) var layouts: [WidgetLayout.ID: WidgetLayout]?
@@ -81,42 +81,5 @@ class WidgetLayoutStore {
         } catch {
             assertionFailure(String(describing: error))
         }
-    }
-
-    static var mock: WidgetLayoutStore {
-        WidgetLayoutStore(
-            manager: MockWidgetLayoutManager(
-                layouts: [
-                    WidgetLayout(
-                        id: UUID().uuidString,
-                        name: "Widget Layout 1",
-                        icon: .square,
-                        color: .blue,
-                        uiDefaults: Data()
-                    ),
-                    WidgetLayout(
-                        id: UUID().uuidString,
-                        name: "Widget Layout 2",
-                        icon: .circle,
-                        color: .brown,
-                        uiDefaults: Data()
-                    ),
-                    WidgetLayout(
-                        id: UUID().uuidString,
-                        name: "Widget Layout 3",
-                        icon: .triangle,
-                        color: .gray,
-                        uiDefaults: Data()
-                    ),
-                    WidgetLayout(
-                        id: UUID().uuidString,
-                        name: "Widget Layout 4",
-                        icon: .diamond,
-                        color: .green,
-                        uiDefaults: Data()
-                    )
-                ]
-            )
-        )
     }
 }

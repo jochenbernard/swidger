@@ -1,6 +1,7 @@
 import Observation
 
 @Observable
+@MainActor
 class WidgetLayoutExporterViewModel {
     // swiftlint:disable:next discouraged_optional_collection
     var documents: [WidgetLayoutFileDocument]?

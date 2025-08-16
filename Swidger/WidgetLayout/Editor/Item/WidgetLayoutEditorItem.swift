@@ -69,7 +69,7 @@ struct WidgetLayoutEditorItem: View {
 #Preview {
     WidgetLayoutEditorItem(
         viewModel: WidgetLayoutEditorItemViewModel(
-            store: .mock,
+            store: WidgetLayoutStore(manager: .mock),
             layout: nil
         )
     )

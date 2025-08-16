@@ -1,6 +1,7 @@
 import Foundation
 
 @Observable
+@MainActor
 class WidgetLayoutImporterViewModel {
     private let store: WidgetLayoutStore
 
@@ -14,7 +15,6 @@ class WidgetLayoutImporterViewModel {
         isPresented = true
     }
 
-    @MainActor
     func complete(result: Result<[URL], any Error>) {
         switch result {
         case .success(let urls):
@@ -27,7 +27,6 @@ class WidgetLayoutImporterViewModel {
         }
     }
 
-    @MainActor
     private func importFrom(url: URL) throws {
         let file = try FileWrapper(
             url: url,
@@ -45,7 +44,6 @@ class WidgetLayoutImporterViewModel {
         store.add(layout)
     }
 
-    @MainActor
     private func firstAvailableName(forPreferredName preferredName: String) -> String {
         guard let layouts = store.layouts else {
             return preferredName
