@@ -12,6 +12,8 @@ struct WidgetLayoutEditorItem: View {
 
     var body: some View {
         Form {
+            WidgetLayoutIconPickerButton(selection: $viewModel.icon)
+
             TextField(
                 "Name",
                 text: $viewModel.name

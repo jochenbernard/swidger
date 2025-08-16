@@ -15,19 +15,23 @@ struct WidgetLayoutRow: View {
 
     var body: some View {
         HStack(spacing: 12.0) {
+            WidgetLayoutIconView(layout.icon)
+
             Text(layout.name)
 
             Spacer()
 
-            applyButton
+            Group {
+                applyButton
 
-            editButton
+                editButton
 
-            deleteButton
+                deleteButton
+            }
+            .symbolVariant(.fill)
         }
         .buttonStyle(.borderless)
         .labelStyle(.iconOnly)
-        .symbolVariant(.fill)
         .padding(12.0)
         .contextMenu {
             applyButton

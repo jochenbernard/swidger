@@ -60,17 +60,34 @@ class WidgetLayoutStore {
     }
 
     static var mock: WidgetLayoutStore {
-        let layouts = (0..<4).map { index in
-            WidgetLayout(
-                id: UUID(),
-                name: "Widget Layout \(index + 1)",
-                uiDefaults: Data()
-            )
-        }
-
-        return WidgetLayoutStore(
+        WidgetLayoutStore(
             manager: MockWidgetLayoutManager(
-                layouts: layouts
+                layouts: [
+                    WidgetLayout(
+                        id: UUID(),
+                        name: "Widget Layout 1",
+                        icon: .square,
+                        uiDefaults: Data()
+                    ),
+                    WidgetLayout(
+                        id: UUID(),
+                        name: "Widget Layout 2",
+                        icon: .circle,
+                        uiDefaults: Data()
+                    ),
+                    WidgetLayout(
+                        id: UUID(),
+                        name: "Widget Layout 3",
+                        icon: .triangle,
+                        uiDefaults: Data()
+                    ),
+                    WidgetLayout(
+                        id: UUID(),
+                        name: "Widget Layout 4",
+                        icon: .diamond,
+                        uiDefaults: Data()
+                    )
+                ]
             )
         )
     }

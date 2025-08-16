@@ -7,6 +7,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
     private let layout: WidgetLayout?
 
     var name: String
+    var icon: WidgetLayoutIcon
 
     var mode: Mode {
         if layout != nil {
@@ -39,6 +40,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
         self.layout = layout
 
         self.name = layout?.name ?? ""
+        self.icon = layout?.icon ?? .square
     }
 
     func confirm() {
@@ -58,6 +60,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
             WidgetLayout(
                 id: layout.id,
                 name: name,
+                icon: icon,
                 uiDefaults: layout.uiDefaults
             )
         )
@@ -68,6 +71,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
             WidgetLayout(
                 id: UUID(),
                 name: name,
+                icon: icon,
                 uiDefaults: Data()
             )
         )
