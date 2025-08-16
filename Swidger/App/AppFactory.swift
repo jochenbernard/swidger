@@ -1,7 +1,6 @@
 import Foundation
 
 @Observable
-@MainActor
 class AppFactory {
     private let fileManager = FileManager.default
     private let userDefaults = UserDefaults.standard
@@ -65,6 +64,7 @@ class AppFactory {
         return widgetLayoutStore
     }
 
+    @MainActor
     private func createWidgetLayoutListViewModel() -> WidgetLayoutListViewModel {
         WidgetLayoutListViewModel(store: createWidgetLayoutStore())
     }
@@ -76,6 +76,7 @@ class AppFactory {
         )
     }
 
+    @MainActor
     func createAppViewModel() -> AppViewModel {
         AppViewModel(
             list: createWidgetLayoutListViewModel(),

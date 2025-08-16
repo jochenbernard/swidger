@@ -1,7 +1,6 @@
 import SwiftUI
 
 @Observable
-@MainActor
 class DevelopCommandsViewModel {
     private let factory: AppFactory
     private let applicationSupportDirectoryURL: URL

@@ -1,7 +1,6 @@
 import Foundation
 
 @Observable
-@MainActor
 class WidgetLayoutImporterViewModel {
     private let store: WidgetLayoutStore
 
