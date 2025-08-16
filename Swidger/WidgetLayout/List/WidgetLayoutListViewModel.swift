@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUICommon
 
 @Observable
 @MainActor
@@ -9,6 +10,8 @@ class WidgetLayoutListViewModel {
 
     // swiftlint:disable:next discouraged_optional_collection
     private(set) var layouts: [WidgetLayout]?
+
+    var confirmation: ConfirmationModel?
 
     init(store: WidgetLayoutStore) {
         self.store = store
@@ -32,12 +35,11 @@ class WidgetLayoutListViewModel {
             .sorted(by: { $0.name < $1.name })
     }
 
-    func delete(indexSet: IndexSet) {
-        let layouts = indexSet.compactMap({ self.layouts?[$0] })
-        store.delete(layouts)
-    }
-
     func apply(_ layout: WidgetLayout) {
         store.apply(layout)
+    }
+
+    func delete(_ layout: WidgetLayout) {
+        store.delete(layout)
     }
 }

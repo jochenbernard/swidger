@@ -75,12 +75,9 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
         )
     }
 
-    func delete(_ layouts: [WidgetLayout]) {
-        layouts
-            .map(fileURL)
-            .forEach { fileURL in
-                try? fileManager.removeItem(at: fileURL)
-            }
+    func delete(_ layout: WidgetLayout) throws {
+        let fileURL = fileURL(for: layout)
+        try fileManager.removeItem(at: fileURL)
     }
 
     func apply(_ layout: WidgetLayout) throws {

@@ -27,10 +27,8 @@ class MockWidgetLayoutManager: WidgetLayoutManagerProtocol {
         layouts[layout.id] = layout
     }
 
-    func delete(_ layouts: [WidgetLayout]) {
-        for layout in layouts {
-            self.layouts.removeValue(forKey: layout.id)
-        }
+    func delete(_ layout: WidgetLayout) {
+        layouts.removeValue(forKey: layout.id)
     }
 
     func apply(_: WidgetLayout) {}

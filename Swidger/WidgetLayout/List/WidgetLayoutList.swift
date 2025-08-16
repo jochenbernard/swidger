@@ -1,7 +1,8 @@
 import SwiftUI
+import SwiftUICommon
 
 struct WidgetLayoutList: View {
-    private let viewModel: WidgetLayoutListViewModel
+    @Bindable private var viewModel: WidgetLayoutListViewModel
 
     init(viewModel: WidgetLayoutListViewModel) {
         self.viewModel = viewModel
@@ -11,14 +12,11 @@ struct WidgetLayoutList: View {
         Group {
             if let layouts = viewModel.layouts {
                 if !layouts.isEmpty {
-                    List {
-                        ForEach(layouts) { layout in
-                            WidgetLayoutRow(
-                                layout,
-                                viewModel: viewModel
-                            )
-                        }
-                        .onDelete(perform: viewModel.delete)
+                    List(layouts) { layout in
+                        WidgetLayoutRow(
+                            layout,
+                            viewModel: viewModel
+                        )
                     }
                 } else {
                     ContentUnavailableView(
@@ -31,6 +29,7 @@ struct WidgetLayoutList: View {
             }
         }
         .widgetLayoutEditor(viewModel: viewModel.editor)
+        .confirmation(model: $viewModel.confirmation)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button(

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		71201FAB2E5077ED00FCAAAD /* SwiftUICommon in Frameworks */ = {isa = PBXBuildFile; productRef = 71201FAA2E5077ED00FCAAAD /* SwiftUICommon */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		71F9B7BA2E4F1914005DA0F6 /* Swidger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swidger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71201FAB2E5077ED00FCAAAD /* SwiftUICommon in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +71,7 @@
 			);
 			name = Swidger;
 			packageProductDependencies = (
+				71201FAA2E5077ED00FCAAAD /* SwiftUICommon */,
 			);
 			productName = Swidger;
 			productReference = 71F9B7BA2E4F1914005DA0F6 /* Swidger.app */;
@@ -97,6 +103,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				71B53A872E4F1EBD00A69FD0 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				71201FA92E5077ED00FCAAAD /* XCRemoteSwiftPackageReference "swift-common" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 71F9B7BB2E4F1914005DA0F6 /* Products */;
@@ -336,6 +343,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		71201FA92E5077ED00FCAAAD /* XCRemoteSwiftPackageReference "swift-common" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jochenbernard/swift-common";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		71B53A872E4F1EBD00A69FD0 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
@@ -347,6 +362,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		71201FAA2E5077ED00FCAAAD /* SwiftUICommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71201FA92E5077ED00FCAAAD /* XCRemoteSwiftPackageReference "swift-common" */;
+			productName = SwiftUICommon;
+		};
 		71B53A882E4F1F2400A69FD0 /* SwiftLintBuildToolPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 71B53A872E4F1EBD00A69FD0 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
