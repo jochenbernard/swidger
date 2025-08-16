@@ -16,7 +16,7 @@ struct WidgetLayoutListCommands: Commands {
 
             editButton
 
-            Divider()
+            updateButton
 
             deleteButton
 
@@ -44,6 +44,22 @@ struct WidgetLayoutListCommands: Commands {
             action: viewModel.editSelection
         )
         .keyboardShortcut("e")
+        .disabled(viewModel.selection.count != 1)
+    }
+
+    private var updateButton: some View {
+        ButtonWithConfirmation(
+            role: .destructive,
+            action: viewModel.updateSelection,
+            label: Label(
+                "Update Widget Layout",
+                systemImage: "arrow.clockwise"
+            ),
+            confirmationTitle: Text("Are you sure you want to update this widget layout?"),
+            confirmationMessage: Text("This will override the currently saved layout."),
+            model: $viewModel.confirmation
+        )
+        .keyboardShortcut("u")
         .disabled(viewModel.selection.count != 1)
     }
 

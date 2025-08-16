@@ -37,11 +37,7 @@ struct WidgetLayoutRow: View {
 
             editButton
 
-            Divider()
-
             updateButton
-
-            Divider()
 
             deleteButton
         }

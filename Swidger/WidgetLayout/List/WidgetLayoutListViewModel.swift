@@ -60,6 +60,18 @@ class WidgetLayoutListViewModel {
         store.update(layout)
     }
 
+    func updateSelection() {
+        guard
+            selection.count == 1,
+            let id = selection.first,
+            let layout = store.layouts?[id]
+        else {
+            return
+        }
+
+        update(layout)
+    }
+
     func delete(_ layout: WidgetLayout) {
         store.delete(layout)
     }
