@@ -42,7 +42,11 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
     }
 
     func add(_ layout: WidgetLayout) throws {
-        let uiDefaults = try notificationCenterManager.getUIDefaults()
+        let uiDefaults = if layout.uiDefaults.isEmpty {
+            try notificationCenterManager.getUIDefaults()
+        } else {
+            layout.uiDefaults
+        }
         let document = WidgetLayoutFileDocument(
             id: layout.id,
             name: layout.name,

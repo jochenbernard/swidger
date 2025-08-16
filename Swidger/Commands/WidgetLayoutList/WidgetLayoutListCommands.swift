@@ -66,10 +66,9 @@ struct WidgetLayoutListCommands: Commands {
         Button(
             "Import Widget Layouts...",
             systemImage: "square.and.arrow.down",
-            action: {}
+            action: viewModel.importer.present
         )
         .keyboardShortcut("i", modifiers: [.command, .shift])
-        .disabled(true)
     }
 
     private var exportButton: some View {

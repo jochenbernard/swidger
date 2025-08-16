@@ -26,9 +26,9 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
         let name = trimmedName
         return (
             !name.isEmpty &&
-            store.layouts?.values.contains { existingLayout in
-                existingLayout.id != layout?.id &&
-                existingLayout.name == name
+            store.layouts?.contains { existingLayout in
+                existingLayout.value.id != layout?.id &&
+                existingLayout.value.name == name
             } == false
         )
     }

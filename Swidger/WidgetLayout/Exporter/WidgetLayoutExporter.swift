@@ -9,13 +9,12 @@ private struct WidgetLayoutExporter: ViewModifier {
     }
 
     func body(content: Content) -> some View {
-        content
-            .fileExporter(
-                isPresented: .hasValue($viewModel.documents),
-                documents: viewModel.documents ?? [],
-                contentTypes: WidgetLayoutFileDocument.writableContentTypes,
-                onCompletion: { _ in }
-            )
+        content.fileExporter(
+            isPresented: .hasValue($viewModel.documents),
+            documents: viewModel.documents ?? [],
+            contentTypes: WidgetLayoutFileDocument.writableContentTypes,
+            onCompletion: { _ in }
+        )
     }
 }
 

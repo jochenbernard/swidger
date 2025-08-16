@@ -7,6 +7,7 @@ class WidgetLayoutListViewModel {
     private let store: WidgetLayoutStore
 
     let editor: WidgetLayoutEditorViewModel
+    let importer: WidgetLayoutImporterViewModel
     let exporter: WidgetLayoutExporterViewModel
 
     // swiftlint:disable:next discouraged_optional_collection
@@ -19,6 +20,7 @@ class WidgetLayoutListViewModel {
         self.store = store
 
         self.editor = WidgetLayoutEditorViewModel(store: store)
+        self.importer = WidgetLayoutImporterViewModel(store: store)
         self.exporter = WidgetLayoutExporterViewModel()
 
         self.trackLayouts()
