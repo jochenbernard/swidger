@@ -5,48 +5,95 @@ struct WidgetLayoutIconPicker: View {
     @Environment(\.dismiss)
     private var dismiss
 
-    @Binding private var selection: WidgetLayoutIcon
+    @Binding private var icon: WidgetLayoutIcon
+    @Binding private var color: WidgetLayoutColor
 
-    init(selection: Binding<WidgetLayoutIcon>) {
-        self._selection = selection
+    init(
+        icon: Binding<WidgetLayoutIcon>,
+        color: Binding<WidgetLayoutColor>
+    ) {
+        self._icon = icon
+        self._color = color
     }
 
     var body: some View {
-        LazyVGrid(
-            columnCount: 6,
-            spacing: 8.0,
-        ) {
-            ForEach(
-                WidgetLayoutIcon.allCases,
-                id: \.rawValue
-            ) { icon in
-                Button(
-                    action: { select(icon) },
-                    label: { WidgetLayoutIconView(icon) }
-                )
-                .tint(
-                    selection == icon
-                    ? .accentColor
-                    : .primary
-                )
+        ScrollView {
+            LazyVGrid(
+                columnCount: 5,
+                spacing: 8.0,
+            ) {
+                colorPicker
+
+                iconPicker
             }
+            .buttonStyle(.borderless)
+            .padding(8.0)
+            .fixedSize()
         }
-        .buttonStyle(.borderless)
-        .padding(8.0)
-        .fixedSize()
+    }
+
+    private var colorPicker: some View {
+        ForEach(
+            WidgetLayoutColor.allCases,
+            id: \.rawValue
+        ) { color in
+            Button(
+                action: { select(color) },
+                label: {
+                    Circle()
+                        .fill(color.color)
+                        .frame(size: 40.0)
+                        .overlay {
+                            if color == self.color {
+                                Circle()
+                                    .fill(.white)
+                                    .frame(size: 8.0)
+                            }
+                        }
+                }
+            )
+        }
+    }
+
+    private var iconPicker: some View {
+        ForEach(
+            WidgetLayoutIcon.allCases,
+            id: \.rawValue
+        ) { icon in
+            Button(
+                action: { select(icon) },
+                label: {
+                    WidgetLayoutIconView(
+                        icon: icon,
+                        color: (
+                            icon == self.icon
+                            ? .accentColor
+                            : .primary
+                        )
+                    )
+                }
+            )
+        }
+    }
+
+    private func select(_ color: WidgetLayoutColor) {
+        self.color = color
     }
 
     private func select(_ icon: WidgetLayoutIcon) {
-        dismiss()
-        selection = icon
+        self.icon = icon
     }
 }
 
 private struct WidgetLayoutIconPickerPreview: View {
-    @State private var selection = WidgetLayoutIcon.square
+    @State private var icon = WidgetLayoutIcon.square
+    @State private var color = WidgetLayoutColor.blue
 
     var body: some View {
-        WidgetLayoutIconPicker(selection: $selection)
+        WidgetLayoutIconPicker(
+            icon: $icon,
+            color: $color
+        )
     }
 }
 

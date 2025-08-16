@@ -8,6 +8,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
 
     var name: String
     var icon: WidgetLayoutIcon
+    var color: WidgetLayoutColor
 
     var mode: Mode {
         if layout != nil {
@@ -41,6 +42,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
 
         self.name = layout?.name ?? ""
         self.icon = layout?.icon ?? .square
+        self.color = layout?.color ?? .blue
     }
 
     func confirm() {
@@ -61,6 +63,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
                 id: layout.id,
                 name: name,
                 icon: icon,
+                color: color,
                 uiDefaults: layout.uiDefaults
             )
         )
@@ -72,6 +75,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
                 id: UUID(),
                 name: name,
                 icon: icon,
+                color: color,
                 uiDefaults: Data()
             )
         )

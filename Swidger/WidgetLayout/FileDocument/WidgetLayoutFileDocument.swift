@@ -8,17 +8,20 @@ struct WidgetLayoutFileDocument: Codable, FileDocument, Identifiable {
     let id: UUID
     let name: String
     let icon: WidgetLayoutIcon
+    let color: WidgetLayoutColor
     let uiDefaults: Data
 
     init(
         id: UUID,
         name: String,
         icon: WidgetLayoutIcon,
+        color: WidgetLayoutColor,
         uiDefaults: Data
     ) {
         self.id = id
         self.name = name
         self.icon = icon
+        self.color = color
         self.uiDefaults = uiDefaults
     }
 

@@ -24,6 +24,7 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
             id: document.id,
             name: document.name,
             icon: document.icon,
+            color: document.color,
             uiDefaults: document.uiDefaults
         )
     }
@@ -52,6 +53,7 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
             id: layout.id,
             name: layout.name,
             icon: layout.icon,
+            color: layout.color,
             uiDefaults: uiDefaults
         )
         let file = try document.fileWrapper()
@@ -67,6 +69,7 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
             id: layout.id,
             name: layout.name,
             icon: layout.icon,
+            color: layout.color,
             uiDefaults: layout.uiDefaults
         )
         let file = try document.fileWrapper()

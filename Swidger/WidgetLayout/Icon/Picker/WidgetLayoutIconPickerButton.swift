@@ -1,21 +1,32 @@
 import SwiftUI
 
 struct WidgetLayoutIconPickerButton: View {
-    @Binding private var selection: WidgetLayoutIcon
+    @Binding private var icon: WidgetLayoutIcon
+    @Binding private var color: WidgetLayoutColor
 
     @State private var isPopoverPresented = false
 
-    init(selection: Binding<WidgetLayoutIcon>) {
-        self._selection = selection
+    init(
+        icon: Binding<WidgetLayoutIcon>,
+        color: Binding<WidgetLayoutColor>
+    ) {
+        self._icon = icon
+        self._color = color
     }
 
     var body: some View {
         Button(action: presentPopover) {
-            WidgetLayoutIconView(selection)
+            WidgetLayoutIconView(
+                icon: icon,
+                color: color.color
+            )
         }
         .buttonStyle(.borderless)
         .popover(isPresented: $isPopoverPresented) {
-            WidgetLayoutIconPicker(selection: $selection)
+            WidgetLayoutIconPicker(
+                icon: $icon,
+                color: $color
+            )
         }
     }
 
@@ -25,10 +36,14 @@ struct WidgetLayoutIconPickerButton: View {
 }
 
 private struct WidgetLayoutIconPickerButtonPreview: View {
-    @State private var selection = WidgetLayoutIcon.square
+    @State private var icon = WidgetLayoutIcon.square
+    @State private var color = WidgetLayoutColor.blue
 
     var body: some View {
-        WidgetLayoutIconPickerButton(selection: $selection)
+        WidgetLayoutIconPickerButton(
+            icon: $icon,
+            color: $color
+        )
     }
 }
 

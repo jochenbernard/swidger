@@ -15,7 +15,10 @@ struct WidgetLayoutRow: View {
 
     var body: some View {
         HStack(spacing: 12.0) {
-            WidgetLayoutIconView(layout.icon)
+            WidgetLayoutIconView(
+                icon: layout.icon,
+                color: layout.color.color
+            )
 
             Text(layout.name)
 

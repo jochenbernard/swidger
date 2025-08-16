@@ -12,12 +12,19 @@ struct WidgetLayoutEditorItem: View {
 
     var body: some View {
         Form {
-            WidgetLayoutIconPickerButton(selection: $viewModel.icon)
+            HStack(spacing: 12.0) {
+                WidgetLayoutIconPickerButton(
+                    icon: $viewModel.icon,
+                    color: $viewModel.color
+                )
 
-            TextField(
-                "Name",
-                text: $viewModel.name
-            )
+                TextField(
+                    "Name",
+                    text: $viewModel.name
+                )
+                .textFieldStyle(.roundedBorder)
+                .labelsHidden()
+            }
         }
         .padding()
         .toolbar {
