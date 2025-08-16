@@ -25,6 +25,16 @@ struct WidgetLayoutFileDocument: Codable, FileDocument, Identifiable {
         self.uiDefaults = uiDefaults
     }
 
+    init(_ layout: WidgetLayout) {
+        self.init(
+            id: layout.id,
+            name: layout.name,
+            icon: layout.icon,
+            color: layout.color,
+            uiDefaults: layout.uiDefaults
+        )
+    }
+
     init(file: FileWrapper) throws {
         guard let fileContents = file.regularFileContents else {
             throw Error.missingFileContents
@@ -42,7 +52,9 @@ struct WidgetLayoutFileDocument: Codable, FileDocument, Identifiable {
     func fileWrapper() throws -> FileWrapper {
         let encoder = JSONEncoder()
         let data = try encoder.encode(self)
-        return FileWrapper(regularFileWithContents: data)
+        let wrapper = FileWrapper(regularFileWithContents: data)
+        wrapper.preferredFilename = name
+        return wrapper
     }
 
     // swiftlint:disable:next unused_parameter

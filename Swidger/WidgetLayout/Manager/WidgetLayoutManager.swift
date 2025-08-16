@@ -20,13 +20,7 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
             options: .immediate
         )
         let document = try WidgetLayoutFileDocument(file: file)
-        return WidgetLayout(
-            id: document.id,
-            name: document.name,
-            icon: document.icon,
-            color: document.color,
-            uiDefaults: document.uiDefaults
-        )
+        return WidgetLayout(document)
     }
 
     func get(id: WidgetLayout.ID) throws -> WidgetLayout {
@@ -65,13 +59,7 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
     }
 
     func edit(_ layout: WidgetLayout) throws {
-        let document = WidgetLayoutFileDocument(
-            id: layout.id,
-            name: layout.name,
-            icon: layout.icon,
-            color: layout.color,
-            uiDefaults: layout.uiDefaults
-        )
+        let document = WidgetLayoutFileDocument(layout)
         let file = try document.fileWrapper()
         let fileURL = fileURL(for: layout)
         try file.write(

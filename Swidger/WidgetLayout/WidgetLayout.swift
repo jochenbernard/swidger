@@ -21,6 +21,16 @@ final class WidgetLayout: Identifiable, Sendable {
         self.uiDefaults = uiDefaults
     }
 
+    convenience init(_ document: WidgetLayoutFileDocument) {
+        self.init(
+            id: document.id,
+            name: document.name,
+            icon: document.icon,
+            color: document.color,
+            uiDefaults: document.uiDefaults
+        )
+    }
+
     static var mock: WidgetLayout {
         WidgetLayout(
             id: UUID(),

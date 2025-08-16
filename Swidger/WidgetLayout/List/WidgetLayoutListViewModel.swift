@@ -7,6 +7,7 @@ class WidgetLayoutListViewModel {
     private let store: WidgetLayoutStore
 
     let editor: WidgetLayoutEditorViewModel
+    let exporter: WidgetLayoutExporterViewModel
 
     // swiftlint:disable:next discouraged_optional_collection
     private(set) var layouts: [WidgetLayout]?
@@ -18,6 +19,7 @@ class WidgetLayoutListViewModel {
         self.store = store
 
         self.editor = WidgetLayoutEditorViewModel(store: store)
+        self.exporter = WidgetLayoutExporterViewModel()
 
         self.trackLayouts()
     }
@@ -41,11 +43,15 @@ class WidgetLayoutListViewModel {
     }
 
     func editSelection() {
-        guard selection.count == 1 else {
+        guard
+            selection.count == 1,
+            let id = selection.first,
+            let layout = store.layouts?[id]
+        else {
             return
         }
 
-        editor.edit(id: selection[selection.startIndex])
+        editor.edit(layout)
     }
 
     func update(_ layout: WidgetLayout) {
@@ -58,5 +64,10 @@ class WidgetLayoutListViewModel {
 
     func deleteSelection() {
         store.delete(ids: selection)
+    }
+
+    func exportSelection() {
+        let layouts = selection.compactMap({ store.layouts?[$0] })
+        exporter.export(layouts)
     }
 }

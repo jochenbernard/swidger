@@ -32,6 +32,7 @@ struct WidgetLayoutList: View {
                 ProgressView()
             }
         }
+        .widgetLayoutExporter(viewModel: viewModel.exporter)
         .widgetLayoutEditor(viewModel: viewModel.editor)
         .confirmation(model: $viewModel.confirmation)
         .toolbar {
