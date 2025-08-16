@@ -48,6 +48,10 @@ class WidgetLayoutListViewModel {
         editor.edit(id: selection[selection.startIndex])
     }
 
+    func update(_ layout: WidgetLayout) {
+        store.update(layout)
+    }
+
     func delete(_ layout: WidgetLayout) {
         store.delete(layout)
     }

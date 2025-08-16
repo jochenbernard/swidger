@@ -347,8 +347,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jochenbernard/swift-common";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				branch = "feature/confirmation-message";
+				kind = branch;
 			};
 		};
 		71B53A872E4F1EBD00A69FD0 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {

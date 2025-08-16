@@ -1,13 +1,13 @@
 {
-  "originHash" : "18784a76d75b1a50ec11210380317f54cf66ced201c8846689d2514121f5ae8d",
+  "originHash" : "29bec9ed7d2c5183467d663b7c938e5cf9cf50426bfb747411540729564e2678",
   "pins" : [
     {
       "identity" : "swift-common",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jochenbernard/swift-common",
       "state" : {
-        "revision" : "f81f1b0f7c43c6daf2538fb6195745f36e6f3fd7",
-        "version" : "0.1.0"
+        "branch" : "feature/confirmation-message",
+        "revision" : "6323ab7cb6673eed69c90c7468ff3ddce3e14bdf"
       }
     },
     {

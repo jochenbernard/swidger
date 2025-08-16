@@ -13,6 +13,9 @@
     "Are you sure you want to delete this widget layout?" : {
 
     },
+    "Are you sure you want to update this widget layout?" : {
+
+    },
     "Cancel" : {
 
     },
@@ -41,6 +44,12 @@
 
     },
     "Swidger" : {
+
+    },
+    "This will override the currently saved layout." : {
+
+    },
+    "Update" : {
 
     },
     "Use mock data" : {

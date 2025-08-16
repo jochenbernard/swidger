@@ -42,6 +42,15 @@ class WidgetLayoutStore {
         update()
     }
 
+    func update(_ layout: WidgetLayout) {
+        do {
+            try manager.update(layout)
+        } catch {
+            assertionFailure(String(describing: error))
+        }
+        update()
+    }
+
     func delete(id: WidgetLayout.ID) {
         do {
             try manager.delete(id: id)

@@ -3,6 +3,7 @@ protocol WidgetLayoutManagerProtocol {
     func getAll() throws -> [WidgetLayout]
     func add(_ layout: WidgetLayout) throws
     func edit(_ layout: WidgetLayout) throws
+    func update(_ layout: WidgetLayout) throws
     func delete(id: WidgetLayout.ID) throws
     func apply(_ layout: WidgetLayout) throws
 }

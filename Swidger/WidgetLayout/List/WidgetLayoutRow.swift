@@ -24,14 +24,8 @@ struct WidgetLayoutRow: View {
 
             Spacer()
 
-            Group {
-                applyButton
-
-                editButton
-
-                deleteButton
-            }
-            .symbolVariant(.fill)
+            applyButton
+                .symbolVariant(.fill)
         }
         .buttonStyle(.borderless)
         .labelStyle(.iconOnly)
@@ -42,6 +36,10 @@ struct WidgetLayoutRow: View {
             Divider()
 
             editButton
+
+            Divider()
+
+            updateButton
 
             Divider()
 
@@ -65,6 +63,20 @@ struct WidgetLayoutRow: View {
         )
     }
 
+    private var updateButton: some View {
+        ButtonWithConfirmation(
+            role: .destructive,
+            action: update,
+            label: Label(
+                "Update",
+                systemImage: "arrow.clockwise"
+            ),
+            confirmationTitle: Text("Are you sure you want to update this widget layout?"),
+            confirmationMessage: Text("This will override the currently saved layout."),
+            model: $viewModel.confirmation
+        )
+    }
+
     private var deleteButton: some View {
         ButtonWithConfirmation(
             role: .destructive,
@@ -84,6 +96,10 @@ struct WidgetLayoutRow: View {
 
     private func edit() {
         viewModel.editor.edit(layout)
+    }
+
+    private func update() {
+        viewModel.update(layout)
     }
 
     private func delete() {

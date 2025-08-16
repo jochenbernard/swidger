@@ -81,6 +81,24 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
         )
     }
 
+    func update(_ layout: WidgetLayout) throws {
+        let uiDefaults = try notificationCenterManager.getUIDefaults()
+        let document = WidgetLayoutFileDocument(
+            id: layout.id,
+            name: layout.name,
+            icon: layout.icon,
+            color: layout.color,
+            uiDefaults: uiDefaults
+        )
+        let file = try document.fileWrapper()
+        let fileURL = fileURL(for: layout)
+        try file.write(
+            to: fileURL,
+            options: .atomic,
+            originalContentsURL: fileURL
+        )
+    }
+
     func delete(id: WidgetLayout.ID) throws {
         let fileURL = fileURL(for: id)
         try fileManager.removeItem(at: fileURL)
