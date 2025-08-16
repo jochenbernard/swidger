@@ -18,6 +18,7 @@ struct WidgetLayoutList: View {
                             viewModel: viewModel
                         )
                     }
+                    .scrollContentBackground(.hidden)
                 } else {
                     ContentUnavailableView(
                         "No Widget Layouts",
