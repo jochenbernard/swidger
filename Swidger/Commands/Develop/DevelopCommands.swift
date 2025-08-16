@@ -13,6 +13,7 @@ struct DevelopCommands: Commands {
                 "Open Application Support Directory...",
                 action: viewModel.openApplicationSupportDirectory
             )
+            .keyboardShortcut("a", modifiers: [.command, .shift])
 
             Divider()
 
@@ -20,6 +21,7 @@ struct DevelopCommands: Commands {
                 "Use mock data",
                 isOn: $viewModel.useMockData
             )
+            .keyboardShortcut("m", modifiers: [.command, .shift])
         }
     }
 }
