@@ -14,26 +14,26 @@ class AppFactory {
                 useMockData,
                 forKey: useMockDataUserDefaultsKey
             )
-            updateManager()
+            updateWidgetLayoutManager()
         }
     }
 
-    private var store: WidgetLayoutStore?
+    private var widgetLayoutStore: WidgetLayoutStore?
 
     init() {
         self.useMockData = userDefaults.bool(forKey: useMockDataUserDefaultsKey)
     }
 
-    private func updateManager() {
-        guard let store else {
+    private func updateWidgetLayoutManager() {
+        guard let widgetLayoutStore else {
             return
         }
 
-        store.manager = createManager()
-        store.update()
+        widgetLayoutStore.manager = createWidgetLayoutManager()
+        widgetLayoutStore.update()
     }
 
-    private func createMockManager() -> WidgetLayoutManagerProtocol {
+    private func createMockWidgetLayoutManager() -> WidgetLayoutManagerProtocol {
         #if DEBUG
         .mock
         #else
@@ -41,39 +41,46 @@ class AppFactory {
         #endif
     }
 
-    private func createActualManager() -> WidgetLayoutManagerProtocol {
+    private func createActualWidgetLayoutManager() -> WidgetLayoutManagerProtocol {
         WidgetLayoutManager(
             fileManager: fileManager,
             directoryURL: applicationSupportDirectoryURL
         )
     }
 
-    func createManager() -> WidgetLayoutManagerProtocol {
+    func createWidgetLayoutManager() -> WidgetLayoutManagerProtocol {
         if useMockData {
-            createMockManager()
+            createMockWidgetLayoutManager()
         } else {
-            createActualManager()
+            createActualWidgetLayoutManager()
         }
     }
 
-    private func createStore() -> WidgetLayoutStore {
-        guard let store else {
-            let store = WidgetLayoutStore(manager: createManager())
-            self.store = store
+    private func createWidgetLayoutStore() -> WidgetLayoutStore {
+        guard let widgetLayoutStore else {
+            let store = WidgetLayoutStore(manager: createWidgetLayoutManager())
+            self.widgetLayoutStore = store
             return store
         }
 
-        return store
+        return widgetLayoutStore
     }
 
-    func createList() -> WidgetLayoutListViewModel {
-        WidgetLayoutListViewModel(store: createStore())
+    private func createWidgetLayoutListViewModel() -> WidgetLayoutListViewModel {
+        WidgetLayoutListViewModel(store: createWidgetLayoutStore())
     }
 
-    func createDevelopCommands() -> DevelopCommandsViewModel {
+    private func createDevelopCommandsViewModel() -> DevelopCommandsViewModel {
         DevelopCommandsViewModel(
             factory: self,
             applicationSupportDirectoryURL: applicationSupportDirectoryURL
+        )
+    }
+
+    func createAppViewModel() -> AppViewModel {
+        AppViewModel(
+            list: createWidgetLayoutListViewModel(),
+            developCommands: createDevelopCommandsViewModel()
         )
     }
 }

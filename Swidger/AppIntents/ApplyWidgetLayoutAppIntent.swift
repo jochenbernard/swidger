@@ -12,7 +12,7 @@ struct ApplyWidgetLayoutAppIntent: AppIntent {
     @MainActor
     func perform() throws -> some IntentResult {
         try AppFactory()
-            .createManager()
+            .createWidgetLayoutManager()
             .apply(layout.layout)
         return .result()
     }

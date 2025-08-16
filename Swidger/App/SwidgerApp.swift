@@ -2,7 +2,7 @@ import SwiftUI
 
 @main
 struct SwidgerApp: App {
-    @State private var viewModel = AppViewModel()
+    @State private var viewModel = AppFactory().createAppViewModel()
 
     var body: some Scene {
         Window(
