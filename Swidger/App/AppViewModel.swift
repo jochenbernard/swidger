@@ -24,15 +24,13 @@ class AppViewModel {
             applicationSupportDirectoryURL: applicationSupportDirectoryURL
         )
 
-        self.trackUseMockData()
+        self.updateList()
+
+        self.developCommands.app = self
     }
 
-    private func trackUseMockData() {
-        withObservationTracking(updateList) {
-            Task { @MainActor [weak self] in
-                self?.trackUseMockData()
-            }
-        }
+    func updateManagers() {
+        updateList()
     }
 
     private func updateList() {

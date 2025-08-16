@@ -81,8 +81,8 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
         )
     }
 
-    func delete(_ layout: WidgetLayout) throws {
-        let fileURL = fileURL(for: layout)
+    func delete(id: WidgetLayout.ID) throws {
+        let fileURL = fileURL(for: id)
         try fileManager.removeItem(at: fileURL)
     }
 

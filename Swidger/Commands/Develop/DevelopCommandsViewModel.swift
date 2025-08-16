@@ -5,9 +5,14 @@ import SwiftUI
 class DevelopCommandsViewModel {
     private let userDefaults: UserDefaults
     private let applicationSupportDirectoryURL: URL
+    weak var app: AppViewModel?
 
     private let useMockDataUserDefaultsKey = "useMockData"
-    var useMockData: Bool
+    var useMockData: Bool {
+        didSet {
+            app?.updateManagers()
+        }
+    }
 
     init(
         userDefaults: UserDefaults,

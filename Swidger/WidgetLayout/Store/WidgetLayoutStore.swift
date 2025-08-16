@@ -42,13 +42,28 @@ class WidgetLayoutStore {
         update()
     }
 
-    func delete(_ layout: WidgetLayout) {
+    func delete(id: WidgetLayout.ID) {
         do {
-            try manager.delete(layout)
+            try manager.delete(id: id)
         } catch {
             assertionFailure(String(describing: error))
         }
         update()
+    }
+
+    func delete(ids: Set<WidgetLayout.ID>) {
+        for id in ids {
+            do {
+                try manager.delete(id: id)
+            } catch {
+                assertionFailure(String(describing: error))
+            }
+        }
+        update()
+    }
+
+    func delete(_ layout: WidgetLayout) {
+        delete(id: layout.id)
     }
 
     func apply(_ layout: WidgetLayout) {

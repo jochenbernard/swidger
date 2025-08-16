@@ -12,7 +12,10 @@ struct WidgetLayoutList: View {
         Group {
             if let layouts = viewModel.layouts {
                 if !layouts.isEmpty {
-                    List(layouts) { layout in
+                    List(
+                        layouts,
+                        selection: $viewModel.selection
+                    ) { layout in
                         WidgetLayoutRow(
                             layout,
                             viewModel: viewModel
@@ -38,7 +41,6 @@ struct WidgetLayoutList: View {
                     systemImage: "plus",
                     action: viewModel.editor.create
                 )
-                .keyboardShortcut("n")
             }
         }
     }

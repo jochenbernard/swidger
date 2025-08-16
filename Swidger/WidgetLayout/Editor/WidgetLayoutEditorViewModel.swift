@@ -15,6 +15,14 @@ class WidgetLayoutEditorViewModel {
         item = createItem(layout: layout)
     }
 
+    func edit(id: WidgetLayout.ID) {
+        guard let layout = store.layouts?[id] else {
+            return
+        }
+
+        edit(layout)
+    }
+
     func create() {
         item = createItem(layout: nil)
     }

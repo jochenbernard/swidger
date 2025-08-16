@@ -11,6 +11,7 @@ class WidgetLayoutListViewModel {
     // swiftlint:disable:next discouraged_optional_collection
     private(set) var layouts: [WidgetLayout]?
 
+    var selection = Set<WidgetLayout.ID>()
     var confirmation: ConfirmationModel?
 
     init(store: WidgetLayoutStore) {
@@ -39,7 +40,19 @@ class WidgetLayoutListViewModel {
         store.apply(layout)
     }
 
+    func editSelection() {
+        guard selection.count == 1 else {
+            return
+        }
+
+        editor.edit(id: selection[selection.startIndex])
+    }
+
     func delete(_ layout: WidgetLayout) {
         store.delete(layout)
+    }
+
+    func deleteSelection() {
+        store.delete(ids: selection)
     }
 }
