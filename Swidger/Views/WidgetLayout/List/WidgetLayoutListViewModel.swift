@@ -73,7 +73,7 @@ class WidgetLayoutListViewModel {
     }
 
     func delete(_ layout: WidgetLayout) {
-        store.delete(layout)
+        store.delete(id: layout.id)
     }
 
     func deleteSelection() {

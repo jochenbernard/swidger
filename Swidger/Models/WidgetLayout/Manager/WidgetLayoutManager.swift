@@ -1,11 +1,10 @@
+import Foundation
 import FoundationCommon
-import SwiftUI
 
 struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
+    private let notificationCenterManager = NotificationCenterManager()
     private let fileManager: FileManager
     private let directoryURL: URL
-
-    private let notificationCenterManager = NotificationCenterManager()
 
     init(
         fileManager: FileManager,
@@ -33,7 +32,8 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
     }
 
     func get(id: WidgetLayout.ID) throws -> WidgetLayout {
-        try get(fileURL: fileURL(for: id))
+        let fileURL = fileURL(for: id)
+        return try get(fileURL: fileURL)
     }
 
     func getAll() throws -> [WidgetLayout] {
@@ -63,8 +63,9 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
             uiDefaults: uiDefaults
         )
         let file = try document.fileWrapper()
+        let fileURL = fileURL(for: layout.id)
         try file.write(
-            to: fileURL(for: layout),
+            to: fileURL,
             options: .atomic,
             originalContentsURL: nil
         )
@@ -73,7 +74,7 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
     func edit(_ layout: WidgetLayout) throws {
         let document = WidgetLayoutFileDocument(layout)
         let file = try document.fileWrapper()
-        let fileURL = fileURL(for: layout)
+        let fileURL = fileURL(for: layout.id)
         try file.write(
             to: fileURL,
             options: .atomic,
@@ -90,7 +91,7 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
             uiDefaults: uiDefaults
         )
         let file = try document.fileWrapper()
-        let fileURL = fileURL(for: layout)
+        let fileURL = fileURL(for: layout.id)
         try file.write(
             to: fileURL,
             options: .atomic,
@@ -105,10 +106,6 @@ struct WidgetLayoutManager: WidgetLayoutManagerProtocol {
 
     func apply(_ layout: WidgetLayout) throws {
         try notificationCenterManager.setUIDefaults(layout.uiDefaults)
-    }
-
-    private func fileURL(for layout: WidgetLayout) -> URL {
-        fileURL(for: layout.id)
     }
 
     private func fileURL(for id: WidgetLayout.ID) -> URL {

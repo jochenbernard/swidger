@@ -30,7 +30,6 @@ class AppFactory {
         }
 
         widgetLayoutStore.manager = createWidgetLayoutManager()
-        widgetLayoutStore.update()
     }
 
     private func createMockWidgetLayoutManager() -> WidgetLayoutManagerProtocol {

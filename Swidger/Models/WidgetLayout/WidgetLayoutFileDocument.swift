@@ -37,8 +37,10 @@ struct WidgetLayoutFileDocument: Codable, FileDocument {
         }
 
         let decoder = JSONDecoder()
-        let document = try decoder.decode(Self.self, from: fileContents)
-        self = document
+        self = try decoder.decode(
+            Self.self,
+            from: fileContents
+        )
     }
 
     init(configuration: ReadConfiguration) throws {

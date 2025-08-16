@@ -1,9 +1,12 @@
-import Foundation
+import Observation
 
 @Observable
-@MainActor
 class WidgetLayoutStore {
-    var manager: WidgetLayoutManagerProtocol
+    var manager: WidgetLayoutManagerProtocol {
+        didSet {
+            update()
+        }
+    }
 
     // swiftlint:disable:next discouraged_optional_collection
     private(set) var layouts: [WidgetLayout.ID: WidgetLayout]?
@@ -69,10 +72,6 @@ class WidgetLayoutStore {
             }
         }
         update()
-    }
-
-    func delete(_ layout: WidgetLayout) {
-        delete(id: layout.id)
     }
 
     func apply(_ layout: WidgetLayout) {
