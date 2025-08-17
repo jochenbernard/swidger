@@ -17,6 +17,11 @@ struct SwidgerApp: App {
             WidgetLayoutList(viewModel: viewModel.list)
         }
         .handlesExternalEvents(matching: [])
+        .defaultLaunchBehavior(
+            viewModel.settings.hideDockIcon
+            ? .suppressed
+            : .presented
+        )
         .commands {
             WidgetLayoutListCommands(viewModel: viewModel.list)
 

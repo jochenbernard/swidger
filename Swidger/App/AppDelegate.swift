@@ -4,7 +4,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @MainActor let viewModel = AppFactory().createAppViewModel()
 
     func application(
-        _ application: NSApplication,
+        _: NSApplication,
         open urls: [URL]
     ) {
         for url in urls {
