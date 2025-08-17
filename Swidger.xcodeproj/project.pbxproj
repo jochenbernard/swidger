@@ -15,9 +15,22 @@
 		71F9B7BA2E4F1914005DA0F6 /* Swidger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swidger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		710A73D12E522539006EE8D9 /* Exceptions for "Swidger" folder in "Swidger" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 71F9B7B92E4F1914005DA0F6 /* Swidger */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		71F9B7BC2E4F1914005DA0F6 /* Swidger */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				710A73D12E522539006EE8D9 /* Exceptions for "Swidger" folder in "Swidger" target */,
+			);
 			path = Swidger;
 			sourceTree = "<group>";
 		};
@@ -295,6 +308,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Swidger/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -318,6 +332,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Swidger/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

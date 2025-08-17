@@ -2,8 +2,17 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct WidgetLayoutFileDocument: Codable, FileDocument {
-    static let filenameExtension = "wl"
-    static let readableContentTypes = [UTType(filenameExtension: filenameExtension)].compactMap(\.self)
+    private static let preferredFilenameExtension = "wl"
+    private static let readableContentType = {
+        UTType("com.jochenbernard.swidger.widgetlayout") ??
+        UTType(filenameExtension: preferredFilenameExtension) ??
+        UTType.data
+    }()
+    static let readableContentTypes = [readableContentType]
+    static let filenameExtension = {
+        readableContentType.preferredFilenameExtension ??
+        preferredFilenameExtension
+    }()
 
     let name: String
     let icon: WidgetLayoutIcon

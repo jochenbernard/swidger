@@ -35,7 +35,7 @@ class AppFactory {
         #if DEBUG
         .mock
         #else
-        createActualManager()
+        createActualWidgetLayoutManager()
         #endif
     }
 
