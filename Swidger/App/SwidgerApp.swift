@@ -2,6 +2,8 @@ import SwiftUI
 
 @main
 struct SwidgerApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     @State private var viewModel = AppFactory().createAppViewModel()
 
     var body: some Scene {
