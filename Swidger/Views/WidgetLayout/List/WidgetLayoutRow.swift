@@ -19,6 +19,8 @@ struct WidgetLayoutRow: View {
                 icon: layout.icon,
                 color: layout.color.color
             )
+            .background(.background.quinary)
+            .clipShape(Circle())
 
             Text(layout.name)
 
