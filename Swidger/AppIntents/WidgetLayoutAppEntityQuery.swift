@@ -1,6 +1,5 @@
 import AppIntents
 
-@MainActor
 struct WidgetLayoutEntityQuery: EntityQuery {
     func entities(for identifiers: [WidgetLayoutAppEntity.ID]) -> [WidgetLayoutAppEntity] {
         let manager = AppFactory().createWidgetLayoutManager()
