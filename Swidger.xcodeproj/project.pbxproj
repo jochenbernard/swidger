@@ -49,18 +49,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7148494D2E50C9D5008BB96B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		71F9B7B12E4F1914005DA0F6 = {
 			isa = PBXGroup;
 			children = (
 				71F9B7BC2E4F1914005DA0F6 /* Swidger */,
-				7148494D2E50C9D5008BB96B /* Frameworks */,
 				71F9B7BB2E4F1914005DA0F6 /* Products */,
 			);
 			sourceTree = "<group>";
