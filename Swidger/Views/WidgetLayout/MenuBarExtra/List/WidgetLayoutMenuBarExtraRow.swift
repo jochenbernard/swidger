@@ -28,6 +28,7 @@ struct WidgetLayoutMenuBarExtraRow: View {
                 maxWidth: .infinity,
                 alignment: .leading
             )
+            .padding(.trailing, 4.0)
             .padding(4.0)
             .background {
                 if isHovered {
