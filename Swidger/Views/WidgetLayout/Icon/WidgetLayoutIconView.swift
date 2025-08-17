@@ -31,4 +31,5 @@ struct WidgetLayoutIconView: View {
         icon: .square,
         color: .blue
     )
+    .padding()
 }

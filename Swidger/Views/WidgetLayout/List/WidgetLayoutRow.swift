@@ -45,7 +45,7 @@ struct WidgetLayoutRow: View {
 
     private var applyButton: some View {
         Button(
-            "Apply",
+            "Apply Widget Layout",
             systemImage: "play",
             action: apply
         )
@@ -53,7 +53,7 @@ struct WidgetLayoutRow: View {
 
     private var editButton: some View {
         Button(
-            "Edit",
+            "Edit Widget Layout",
             systemImage: "pencil",
             action: edit
         )
@@ -64,7 +64,7 @@ struct WidgetLayoutRow: View {
             role: .destructive,
             action: update,
             label: Label(
-                "Update",
+                "Update Widget Layout",
                 systemImage: "arrow.clockwise"
             ),
             confirmationTitle: Text("Are you sure you want to update this widget layout?"),
@@ -78,7 +78,7 @@ struct WidgetLayoutRow: View {
             role: .destructive,
             action: delete,
             label: Label(
-                "Delete",
+                "Delete Widget Layout",
                 systemImage: "trash"
             ),
             confirmationTitle: Text("Are you sure you want to delete this widget layout?"),

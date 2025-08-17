@@ -18,7 +18,7 @@ class WidgetLayoutEditorItemViewModel: Identifiable {
         }
     }
 
-    var trimmedName: String {
+    private var trimmedName: String {
         name.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 

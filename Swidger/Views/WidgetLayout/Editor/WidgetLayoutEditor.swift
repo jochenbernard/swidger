@@ -8,11 +8,10 @@ private struct WidgetLayoutEditor: ViewModifier {
     }
 
     func body(content: Content) -> some View {
-        content
-            .sheet(
-                item: $viewModel.item,
-                content: WidgetLayoutEditorItem.init
-            )
+        content.sheet(
+            item: $viewModel.item,
+            content: WidgetLayoutEditorItem.init
+        )
     }
 }
 

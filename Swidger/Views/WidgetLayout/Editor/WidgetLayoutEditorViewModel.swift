@@ -1,7 +1,6 @@
 import Observation
 
 @Observable
-@MainActor
 class WidgetLayoutEditorViewModel {
     private let store: WidgetLayoutStore
 
@@ -11,14 +10,17 @@ class WidgetLayoutEditorViewModel {
         self.store = store
     }
 
+    @MainActor
     func edit(_ layout: WidgetLayout) {
         item = createItem(layout: layout)
     }
 
+    @MainActor
     func create() {
         item = createItem(layout: nil)
     }
 
+    @MainActor
     private func createItem(layout: WidgetLayout?) -> WidgetLayoutEditorItemViewModel {
         WidgetLayoutEditorItemViewModel(
             store: store,

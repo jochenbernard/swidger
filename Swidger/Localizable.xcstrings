@@ -4,9 +4,6 @@
     "Add Widget Layout" : {
 
     },
-    "Apply" : {
-
-    },
     "Apply ${layout} widget layout" : {
 
     },
@@ -25,16 +22,13 @@
     "Cancel" : {
 
     },
-    "Delete" : {
+    "Delete Widget Layout" : {
 
     },
     "Delete Widget Layouts" : {
 
     },
     "Develop" : {
-
-    },
-    "Edit" : {
 
     },
     "Edit Widget Layout" : {
@@ -59,9 +53,6 @@
 
     },
     "This will override the currently saved layout." : {
-
-    },
-    "Update" : {
 
     },
     "Update Widget Layout" : {

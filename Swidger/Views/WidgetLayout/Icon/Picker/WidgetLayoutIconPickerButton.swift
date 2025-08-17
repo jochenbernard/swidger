@@ -49,4 +49,5 @@ private struct WidgetLayoutIconPickerButtonPreview: View {
 
 #Preview {
     WidgetLayoutIconPickerButtonPreview()
+        .padding()
 }

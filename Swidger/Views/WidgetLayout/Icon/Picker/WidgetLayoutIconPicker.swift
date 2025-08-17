@@ -2,11 +2,10 @@ import SwiftUI
 import SwiftUICommon
 
 struct WidgetLayoutIconPicker: View {
-    @Environment(\.dismiss)
-    private var dismiss
-
     @Binding private var icon: WidgetLayoutIcon
     @Binding private var color: WidgetLayoutColor
+
+    private let spacing = 8.0
 
     init(
         icon: Binding<WidgetLayoutIcon>,
@@ -20,14 +19,14 @@ struct WidgetLayoutIconPicker: View {
         ScrollView {
             LazyVGrid(
                 columnCount: 5,
-                spacing: 8.0,
+                spacing: spacing,
             ) {
                 colorPicker
 
                 iconPicker
             }
             .buttonStyle(.borderless)
-            .padding(8.0)
+            .padding(spacing)
             .fixedSize()
         }
     }
@@ -47,7 +46,7 @@ struct WidgetLayoutIconPicker: View {
                             if color == self.color {
                                 Circle()
                                     .fill(.white)
-                                    .frame(size: 8.0)
+                                    .frame(size: 10.0)
                             }
                         }
                 }

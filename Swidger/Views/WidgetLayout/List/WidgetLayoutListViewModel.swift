@@ -1,4 +1,4 @@
-import Foundation
+import Observation
 import SwiftUICommon
 
 @Observable
@@ -35,9 +35,7 @@ class WidgetLayoutListViewModel {
     }
 
     private func updateLayouts() {
-        layouts = store.layouts?.values
-            .sorted(by: { $0.id < $1.id })
-            .sorted(by: { $0.name < $1.name })
+        layouts = store.layouts?.values.sorted(by: { $0.name < $1.name })
     }
 
     func apply(_ layout: WidgetLayout) {

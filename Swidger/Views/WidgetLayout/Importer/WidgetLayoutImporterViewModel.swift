@@ -57,10 +57,14 @@ class WidgetLayoutImporterViewModel {
         }
 
         var attempt = 1
-        while names.contains("\(preferredName) \(attempt)") {
+        var name: String {
+            "\(preferredName) \(attempt)"
+        }
+
+        while names.contains(name) {
             attempt += 1
         }
 
-        return "\(preferredName) \(attempt)"
+        return name
     }
 }
