@@ -10,6 +10,9 @@ struct SwidgerApp: App {
             id: "swidger"
         ) {
             WidgetLayoutList(viewModel: viewModel.list)
+                .onOpenURL { url in
+                    try? viewModel.list.importer.importFrom(url: url)
+                }
         }
         .commands {
             WidgetLayoutListCommands(viewModel: viewModel.list)

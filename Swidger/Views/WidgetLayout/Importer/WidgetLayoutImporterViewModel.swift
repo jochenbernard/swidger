@@ -26,7 +26,7 @@ class WidgetLayoutImporterViewModel {
         }
     }
 
-    private func importFrom(url: URL) throws {
+    func importFrom(url: URL) throws {
         let file = try FileWrapper(
             url: url,
             options: .immediate
