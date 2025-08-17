@@ -69,6 +69,11 @@ class AppFactory {
         WidgetLayoutListViewModel(store: createWidgetLayoutStore())
     }
 
+    @MainActor
+    private func createSettingsViewModel() -> SettingsViewModel {
+        SettingsViewModel(userDefaults: userDefaults)
+    }
+
     private func createDevelopViewModel() -> DevelopViewModel {
         DevelopViewModel(
             factory: self,
@@ -80,6 +85,7 @@ class AppFactory {
     func createAppViewModel() -> AppViewModel {
         AppViewModel(
             list: createWidgetLayoutListViewModel(),
+            settings: createSettingsViewModel(),
             develop: createDevelopViewModel()
         )
     }

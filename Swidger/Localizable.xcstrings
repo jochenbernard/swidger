@@ -37,6 +37,12 @@
     "Export Widget Layouts..." : {
 
     },
+    "Hello, world!" : {
+
+    },
+    "Hide dock icon" : {
+
+    },
     "Import Widget Layouts..." : {
 
     },
@@ -47,6 +53,9 @@
 
     },
     "Open Application Support Directory..." : {
+
+    },
+    "Show menu bar icon" : {
 
     },
     "Swidger" : {

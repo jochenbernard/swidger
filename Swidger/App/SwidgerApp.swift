@@ -18,5 +18,17 @@ struct SwidgerApp: App {
             DevelopCommands(viewModel: viewModel.develop)
             #endif
         }
+
+        MenuBarExtra(
+            "Swidger",
+            systemImage: "widget.small",
+            isInserted: $viewModel.showMenuBarIcon
+        ) {
+            Text("Hello, world!")
+        }
+
+        Settings {
+            SettingsView(viewModel: viewModel.settings)
+        }
     }
 }
