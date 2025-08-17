@@ -64,9 +64,29 @@ class AppFactory {
         return widgetLayoutStore
     }
 
+    private func createWidgetLayoutEditorViewModel(store: WidgetLayoutStore) -> WidgetLayoutEditorViewModel {
+        WidgetLayoutEditorViewModel(store: store)
+    }
+
+    private func createWidgetLayoutImporterViewModel(store: WidgetLayoutStore) -> WidgetLayoutImporterViewModel {
+        WidgetLayoutImporterViewModel(store: store)
+    }
+
+    private func createWidgetLayoutExporterViewModel() -> WidgetLayoutExporterViewModel {
+        WidgetLayoutExporterViewModel()
+    }
+
     @MainActor
-    private func createWidgetLayoutListViewModel() -> WidgetLayoutListViewModel {
-        WidgetLayoutListViewModel(store: createWidgetLayoutStore())
+    private func createWidgetLayoutListViewModel(
+        store: WidgetLayoutStore,
+        importer: WidgetLayoutImporterViewModel
+    ) -> WidgetLayoutListViewModel {
+        WidgetLayoutListViewModel(
+            store: store,
+            editor: createWidgetLayoutEditorViewModel(store: store),
+            importer: importer,
+            exporter: createWidgetLayoutExporterViewModel()
+        )
     }
 
     @MainActor
@@ -83,8 +103,16 @@ class AppFactory {
 
     @MainActor
     func createAppViewModel() -> AppViewModel {
-        AppViewModel(
-            list: createWidgetLayoutListViewModel(),
+        let store = createWidgetLayoutStore()
+        let importer = createWidgetLayoutImporterViewModel(store: store)
+
+        return AppViewModel(
+            store: store,
+            importer: importer,
+            list: createWidgetLayoutListViewModel(
+                store: store,
+                importer: importer
+            ),
             settings: createSettingsViewModel(),
             develop: createDevelopViewModel()
         )

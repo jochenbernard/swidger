@@ -49,11 +49,14 @@ struct WidgetLayoutList: View {
 }
 
 #Preview {
+    let store = WidgetLayoutStore(manager: .mock)
+
     WidgetLayoutList(
         viewModel: WidgetLayoutListViewModel(
-            store: WidgetLayoutStore(
-                manager: .mock
-            )
+            store: store,
+            editor: WidgetLayoutEditorViewModel(store: store),
+            importer: WidgetLayoutImporterViewModel(store: store),
+            exporter: WidgetLayoutExporterViewModel()
         )
     )
 }

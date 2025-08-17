@@ -2,7 +2,8 @@ import SwiftUI
 
 @main
 struct SwidgerApp: App {
-    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @NSApplicationDelegateAdaptor(AppDelegate.self)
+    private var appDelegate
 
     @State private var viewModel = AppFactory().createAppViewModel()
 
@@ -12,9 +13,7 @@ struct SwidgerApp: App {
             id: "swidger"
         ) {
             WidgetLayoutList(viewModel: viewModel.list)
-                .onOpenURL { url in
-                    try? viewModel.list.importer.importFrom(url: url)
-                }
+                .onOpenURL(perform: viewModel.open)
         }
         .commands {
             WidgetLayoutListCommands(viewModel: viewModel.list)

@@ -16,12 +16,17 @@ class WidgetLayoutListViewModel {
     var selection = Set<WidgetLayout.ID>()
     var confirmation: ConfirmationModel?
 
-    init(store: WidgetLayoutStore) {
+    init(
+        store: WidgetLayoutStore,
+        editor: WidgetLayoutEditorViewModel,
+        importer: WidgetLayoutImporterViewModel,
+        exporter: WidgetLayoutExporterViewModel
+    ) {
         self.store = store
 
-        self.editor = WidgetLayoutEditorViewModel(store: store)
-        self.importer = WidgetLayoutImporterViewModel(store: store)
-        self.exporter = WidgetLayoutExporterViewModel()
+        self.editor = editor
+        self.importer = importer
+        self.exporter = exporter
 
         self.trackLayouts()
     }
