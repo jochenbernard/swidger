@@ -25,11 +25,7 @@ class SettingsViewModel {
                 hideDockIcon,
                 forKey: hideDockIconUserDefaultsKey
             )
-            NSApplication.shared.setActivationPolicy(
-                hideDockIcon
-                ? .accessory
-                : .regular
-            )
+            updateActivationPolicy()
         }
     }
 
@@ -38,5 +34,15 @@ class SettingsViewModel {
 
         self.showMenuBarIcon = userDefaults.bool(forKey: showMenuBarIconUserDefaultsKey)
         self.hideDockIcon = userDefaults.bool(forKey: hideDockIconUserDefaultsKey)
+
+        self.updateActivationPolicy()
+    }
+
+    private func updateActivationPolicy() {
+        NSApplication.shared.setActivationPolicy(
+            hideDockIcon
+            ? .accessory
+            : .regular
+        )
     }
 }

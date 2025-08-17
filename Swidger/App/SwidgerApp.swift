@@ -5,7 +5,9 @@ struct SwidgerApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self)
     private var appDelegate
 
-    @State private var viewModel = AppFactory().createAppViewModel()
+    private var viewModel: AppViewModel {
+        appDelegate.viewModel
+    }
 
     var body: some Scene {
         Window(
@@ -13,8 +15,8 @@ struct SwidgerApp: App {
             id: "swidger"
         ) {
             WidgetLayoutList(viewModel: viewModel.list)
-                .onOpenURL(perform: viewModel.open)
         }
+        .handlesExternalEvents(matching: [])
         .commands {
             WidgetLayoutListCommands(viewModel: viewModel.list)
 
@@ -26,7 +28,10 @@ struct SwidgerApp: App {
         MenuBarExtra(
             "Swidger",
             systemImage: "widget.small",
-            isInserted: $viewModel.showMenuBarIcon
+            isInserted: Binding(
+                get: { viewModel.settings.showMenuBarIcon },
+                set: { viewModel.settings.showMenuBarIcon = $0 }
+            )
         ) {
             WidgetLayoutMenuBarExtraList(viewModel: viewModel.list)
         }
