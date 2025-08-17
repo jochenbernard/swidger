@@ -24,8 +24,9 @@ struct SwidgerApp: App {
             systemImage: "widget.small",
             isInserted: $viewModel.showMenuBarIcon
         ) {
-            Text("Hello, world!")
+            WidgetLayoutMenuBarExtraList(viewModel: viewModel.list)
         }
+        .menuBarExtraStyle(.window)
 
         Settings {
             SettingsView(viewModel: viewModel.settings)
