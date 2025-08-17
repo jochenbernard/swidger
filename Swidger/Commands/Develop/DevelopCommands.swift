@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct DevelopCommands: Commands {
-    @Bindable private var viewModel: DevelopCommandsViewModel
+    @Bindable private var viewModel: DevelopViewModel
 
-    init(viewModel: DevelopCommandsViewModel) {
+    init(viewModel: DevelopViewModel) {
         self.viewModel = viewModel
     }
 

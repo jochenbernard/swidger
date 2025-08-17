@@ -15,7 +15,7 @@ struct SwidgerApp: App {
             WidgetLayoutListCommands(viewModel: viewModel.list)
 
             #if DEBUG
-            DevelopCommands(viewModel: viewModel.developCommands)
+            DevelopCommands(viewModel: viewModel.develop)
             #endif
         }
     }

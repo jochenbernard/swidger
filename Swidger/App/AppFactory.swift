@@ -69,8 +69,8 @@ class AppFactory {
         WidgetLayoutListViewModel(store: createWidgetLayoutStore())
     }
 
-    private func createDevelopCommandsViewModel() -> DevelopCommandsViewModel {
-        DevelopCommandsViewModel(
+    private func createDevelopViewModel() -> DevelopViewModel {
+        DevelopViewModel(
             factory: self,
             applicationSupportDirectoryURL: applicationSupportDirectoryURL
         )
@@ -80,7 +80,7 @@ class AppFactory {
     func createAppViewModel() -> AppViewModel {
         AppViewModel(
             list: createWidgetLayoutListViewModel(),
-            developCommands: createDevelopCommandsViewModel()
+            develop: createDevelopViewModel()
         )
     }
 }
