@@ -9,6 +9,11 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            Button(
+                "Grant Full Disk Access",
+                action: viewModel.grantFullDiskAccess
+            )
+
             Toggle(
                 "Show menu bar icon",
                 isOn: $viewModel.showMenuBarIcon

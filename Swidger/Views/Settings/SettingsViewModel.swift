@@ -45,4 +45,17 @@ class SettingsViewModel {
             : .regular
         )
     }
+
+    func grantFullDiskAccess() {
+        _ = try? FileManager.default.contentsOfDirectory(
+            at: .libraryDirectory.appending(component: "Mail"),
+            includingPropertiesForKeys: nil
+        )
+
+        guard let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles") else {
+            return
+        }
+
+        NSWorkspace.shared.open(url)
+    }
 }
