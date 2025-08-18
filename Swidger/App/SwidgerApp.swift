@@ -38,7 +38,7 @@ struct SwidgerApp: App {
                 set: { viewModel.settings.showMenuBarIcon = $0 }
             )
         ) {
-            WidgetLayoutMenuBarExtraList(viewModel: viewModel.list)
+            MenuBarExtraView(viewModel: viewModel.list)
         }
         .menuBarExtraStyle(.window)
 

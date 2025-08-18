@@ -10,21 +10,11 @@ struct WidgetLayoutMenuBarExtraList: View {
     var body: some View {
         if let layouts = viewModel.layouts {
             if !layouts.isEmpty {
-                ScrollView {
-                    VStack(spacing: .zero) {
-                        ForEach(layouts) { layout in
-                            WidgetLayoutMenuBarExtraRow(
-                                layout,
-                                viewModel: viewModel
-                            )
-                        }
-                    }
-                    .frame(minWidth: 128.0)
-                    .fixedSize(
-                        horizontal: true,
-                        vertical: false
+                ForEach(layouts) { layout in
+                    WidgetLayoutMenuBarExtraRow(
+                        layout,
+                        viewModel: viewModel
                     )
-                    .padding(4.0)
                 }
             } else {
                 ContentUnavailableView(
