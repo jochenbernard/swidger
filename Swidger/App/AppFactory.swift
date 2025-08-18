@@ -1,7 +1,8 @@
-import Foundation
+import ServiceManagement
 
 @Observable
 class AppFactory {
+    private let loginItem = SMAppService.mainApp
     private let fileManager = FileManager.default
     private let userDefaults = UserDefaults.standard
     private let applicationSupportDirectoryURL = URL.applicationSupportDirectory.appending(component: "Swidger")
@@ -91,7 +92,10 @@ class AppFactory {
 
     @MainActor
     private func createSettingsViewModel() -> SettingsViewModel {
-        SettingsViewModel(userDefaults: userDefaults)
+        SettingsViewModel(
+            loginItem: loginItem,
+            userDefaults: userDefaults
+        )
     }
 
     private func createDevelopViewModel() -> DevelopViewModel {

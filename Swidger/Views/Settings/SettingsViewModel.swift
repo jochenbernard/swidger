@@ -1,9 +1,25 @@
+import ServiceManagement
 import SwiftUI
 
 @Observable
 @MainActor
 class SettingsViewModel {
+    private let loginItem: SMAppService
     private let userDefaults: UserDefaults
+
+    var openAtLogin: Bool {
+        didSet {
+            do {
+                if openAtLogin {
+                    try loginItem.register()
+                } else {
+                    try loginItem.unregister()
+                }
+            } catch {
+                assertionFailure(String(describing: error))
+            }
+        }
+    }
 
     private let showMenuBarIconUserDefaultsKey = "showMenuBarIcon"
     var showMenuBarIcon: Bool {
@@ -29,9 +45,14 @@ class SettingsViewModel {
         }
     }
 
-    init(userDefaults: UserDefaults) {
+    init(
+        loginItem: SMAppService,
+        userDefaults: UserDefaults
+    ) {
+        self.loginItem = loginItem
         self.userDefaults = userDefaults
 
+        self.openAtLogin = loginItem.status == .enabled
         self.showMenuBarIcon = userDefaults.bool(forKey: showMenuBarIconUserDefaultsKey)
         self.hideDockIcon = userDefaults.bool(forKey: hideDockIconUserDefaultsKey)
 

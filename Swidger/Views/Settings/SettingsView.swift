@@ -1,3 +1,4 @@
+import ServiceManagement
 import SwiftUI
 
 struct SettingsView: View {
@@ -12,6 +13,11 @@ struct SettingsView: View {
             Button(
                 "Grant Full Disk Access",
                 action: viewModel.grantFullDiskAccess
+            )
+
+            Toggle(
+                "Open at login",
+                isOn: $viewModel.openAtLogin
             )
 
             Toggle(
@@ -33,6 +39,7 @@ struct SettingsView: View {
 #Preview {
     SettingsView(
         viewModel: SettingsViewModel(
+            loginItem: .mainApp,
             userDefaults: .standard
         )
     )
