@@ -2,6 +2,9 @@ import SwiftUI
 import SwiftUICommon
 
 struct WidgetLayoutMenuBarExtraRow: View {
+    @Environment(\.dismiss)
+    private var dismiss
+
     private let layout: WidgetLayout
     @Bindable private var viewModel: WidgetLayoutListViewModel
 
@@ -47,6 +50,7 @@ struct WidgetLayoutMenuBarExtraRow: View {
     }
 
     private func apply() {
+        dismiss()
         viewModel.apply(layout)
     }
 }
