@@ -4,6 +4,9 @@ struct MenuBarExtraView: View {
     @Environment(\.openSettings)
     private var openSettingsAction
 
+    @Environment(\.openWindow)
+    private var openWindow
+
     private let viewModel: WidgetLayoutListViewModel
 
     init(viewModel: WidgetLayoutListViewModel) {
@@ -14,6 +17,15 @@ struct MenuBarExtraView: View {
         ScrollView {
             VStack(spacing: .zero) {
                 WidgetLayoutMenuBarExtraList(viewModel: viewModel)
+
+                divider
+
+                button(
+                    action: openSwidger,
+                    title: "Open...",
+                    keyboardShortcut: "⌘ O"
+                )
+                .keyboardShortcut("o")
 
                 divider
 
@@ -63,6 +75,11 @@ struct MenuBarExtraView: View {
     private var divider: some View {
         Divider()
             .padding(4.0)
+    }
+
+    private func openSwidger() {
+        openWindow(id: "swidger")
+        NSApplication.shared.activate()
     }
 
     private func openSettings() {
